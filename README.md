@@ -1,4 +1,4 @@
-# 🔧 Cryptverse Studio - Windows Installer
+# 🔧 Cryptverse Studio - Windows Installer 
 
 Welcome to the official Cryptverse Studio Windows Installer. This script sets up all the essential tools and configurations required for our team development environment on a Windows machine.
 
