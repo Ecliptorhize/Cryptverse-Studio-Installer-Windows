@@ -100,4 +100,4 @@ if (Get-Command code -ErrorAction SilentlyContinue) {
     Write-Host "  • yoavbls.selene-vscode"
 }
 
-Write-Host "`n✅ All tools installed. You're ready!"
+Write-Host "All tools installed. You're ready!"
