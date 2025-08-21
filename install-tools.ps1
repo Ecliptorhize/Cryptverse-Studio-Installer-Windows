@@ -1,4 +1,8 @@
 # Cryptverse Studio Installer (PowerShell Version)
+param(
+    [switch]$Yes
+)
+
 Clear-Host
 Write-Host ""
 Write-Host "_________                        __                                       _________ __            .___.__        "
@@ -27,10 +31,12 @@ try {
 # ┌──────────────┐
 # │ Confirmation │
 # └──────────────┘
-$confirm = Read-Host "This will install all tools for Argon/Roblox dev. Continue? (y/n)"
-if ($confirm -ne "y") {
-    Write-Host "Cancelled."
-    exit
+if (-not $Yes) {
+    $confirm = Read-Host "This will install all tools for Argon/Roblox dev. Continue? (y/n)"
+    if ($confirm -ne "y") {
+        Write-Host "Cancelled."
+        exit
+    }
 }
 
 # ┌─────────────────────┐
@@ -58,7 +64,7 @@ npm install -g roblox-ts
 # │ Argon CLI  │
 # └────────────┘
 Write-Host "Installing Argon CLI..."
-Invoke-WebRequest -Uri "https://github.com/argon-rbx/argon/releases/download/2.0.24/argon-2.0.24-windows-x86_64.zip" -OutFile "argon.zip"
+Invoke-WebRequest -Uri "https://github.com/argon-rbx/argon/releases/download/2.0.25/argon-2.0.25-windows-x86_64.zip" -OutFile "argon.zip"
 Expand-Archive -Path "argon.zip" -DestinationPath "argon-unpacked" -Force
 Move-Item "argon-unpacked\argon.exe" "C:\ProgramData\chocolatey\bin\argon.exe" -Force
 Remove-Item "argon.zip", "argon-unpacked" -Recurse -Force
