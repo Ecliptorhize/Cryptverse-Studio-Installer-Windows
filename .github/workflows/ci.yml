@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  setup:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run installer (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          ./install-tools.ps1 -Yes
+      - name: Run installer (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          chmod +x install-tools.sh
+          sudo ./install-tools.sh --yes
